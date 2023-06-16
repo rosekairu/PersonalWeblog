@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -133,14 +134,18 @@ USE_TZ = True
 load_dotenv()
 
 # Access the variables
-CLOUD_NAME = os.getenv('CLOUD_NAME')
-API_KEY = os.getenv('API_KEY')
-API_SECRET = os.getenv('API_SECRET')
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET'),
+}
+
 CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
 STATIC_URL = os.getenv('STATIC_URL')
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
 
 
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

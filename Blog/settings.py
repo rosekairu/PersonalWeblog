@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'marketing',
     'posts',
 
-    'cloudinary'
+    'cloudinary',
     'cloudinary_storage',
 ]
 

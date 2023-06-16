@@ -135,16 +135,17 @@ load_dotenv()
 
 # Access the variables
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
-    'API_KEY': os.getenv('API_KEY'),
-    'API_SECRET': os.getenv('API_SECRET'),
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
 }
 
-CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
-STATIC_URL = os.getenv('STATIC_URL')
+CLOUDINARY_URL = config('CLOUDINARY_URL')
+STATIC_URL = config('STATIC_URL')
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
 
 
 

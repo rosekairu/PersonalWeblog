@@ -138,19 +138,16 @@ load_dotenv()
 # Cloudinary Storage Access to the variables
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': config('CLOUDINARY_API_KEY'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME':'dmmebaanc',
+    'API_KEY' :'574514783354568',
+    'API_SECRET' : '7aLtX_SU3-Dh-qzdtXjgKirolPI'
 }
 
-CLOUDINARY_URL = config('CLOUDINARY_URL'),
-STATIC_URL = config('STATIC_URL')
+CLOUDINARY_URL = 'cloudinary://574514783354568:7aLtX_SU3-Dh-qzdtXjgKirolPI@dmmebaanc'
+STATIC_URL = 'https://res.cloudinary.com/dmmebaanc/static/'
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-
-
-
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

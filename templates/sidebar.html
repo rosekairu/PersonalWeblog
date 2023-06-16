@@ -1,0 +1,59 @@
+{% load static %}
+<!-- Blog sidebar-->
+<div class="col-lg-3">
+    <!-- About category-->
+    <div class="card bg-light mb-4 py-lg-4">
+      <div class="card-body text-center">
+        <h2 class="h3 mb-3">About me</h2>
+        {% if profile_picture %}
+        <img class="rounded-circle mb-3" src="{{ profile_picture.url }}" alt="Profile Picture" width="100">
+        {% else %}
+        <img class="rounded-circle mb-3" src="{% static 'img/default-profile-picture.jpg' %}" alt="Default Profile Picture"
+          width="100">
+        {% endif %}
+        {% if description %}
+        <p class="text-sm text-muted">{{ description }}</p>
+        {% else %}
+        <p class="text-sm text-muted">No description available.</p>
+        {% endif %}
+        <ul class="list-inline small mb-0 text-dark">
+          <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-instagram"></i></a></li>
+          <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-linkedin"></i></a></li>
+          <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-youtube"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Recent posts-->
+    <div class="card mb-4">
+      <div class="card-body p-0">
+        <h2 class="h5 mb-3">Recent posts</h2>
+        {% for post in recent %}
+          <div class="d-flex mb-3"><a class="flex-shrink-0" href="{{ post.get_absolute_url }}"><img class="img-fluid" src="{{ post.thumbnail.url }}" alt="" width="70"></a>
+            <div class="ms-3">
+              <h6> <a class="reset-anchor" href="{{ post.get_absolute_url }}" >{{ post.title }}</a></h6>
+              <p class="text-sm text-muted lh-sm mb-0">{{ post.overview | safe }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <!-- Categories-->
+    <div class="card mb-4">
+      <div class="card-body p-0">
+        <h2 class="h5 mb-3">Trending categories</h2>
+        {% for cat in category_count %}
+        <div class="item d-flex justify-content-between">
+          <a href="#">{{ cat.categories__title }}</a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- Ad-->
+    <div class="card mb-4">
+      <div class="card-body p-0"><a class="d-block" href="#!"><img class="img-fluid" src="{% static 'img/banner.jpg' %}" alt=""></a></div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="py-5">
+      <div class="container pb-4">
+        <div class="row text-center">
+          <div class="col-lg-8 mx-auto">
+            {% for category in recent.categories.all %}
+            <a class="category-link mb-3 d-inline-block" href="#!">{{category}}</a> 
+            {% endfor%}
+            
+            <h1> <a class="d-block reset-anchor" href="{{ recent.get_absolute_url }}"> {{recent.title}} </h1>
+            
+            <img class="w-100 mb-5" src="{{ recent.thumbnail.url }}" alt="..." style="max-width: 300px; height: auto;">
+            <p>{{recent.overview | safe }}</p>
+            
+            <!--p class="lead drop-caps mb-5">{{recent.content | safe }}</p-->
+            <ul class="list-inline mb-5">
+              <li class="list-inline-item mx-2"><a class="text-uppercase text-muted reset-anchor" href="#!">{{recent.author}}</a></li>
+              <li class="list-inline-item mx-2"><a class="text-uppercase text-muted reset-anchor" href="#!">{{recent.date}}</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- quotes API -->
+        <div class="row gy-5">
+            <div class="col-lg-12">
+              <figure id="quote-figure" class="bg-dark p-4 p-lg-5 text-center text-white mb-5">
+                <blockquote id="quote-block" class="blockquote">
+                  <p id="quote-content" class="h4 mb-5"></p>
+                </blockquote>
+                <figcaption id="quote-caption" class="blockquote-footer">
+                  <cite id="quote-author" class="fst-normal text-primary" title="Source Title"></cite>
+                </figcaption>
+              </figure>
+            </div> 
+          </div>        
+        </div>
+      </section>
+  
+      <script>
+        // Fetch tech quotes from the API
+        fetch('https://type.fit/api/quotes')
+          .then(response => response.json())
+          .then(data => {
+
+            // Get a random quote from the fetched quotes
+      const randomIndex = Math.floor(Math.random() * data.length);
+      const randomQuote = data[randomIndex];
+
+            // Get the necessary DOM elements
+            const quoteContent = document.getElementById('quote-content');
+            const quoteAuthor = document.getElementById('quote-author');
+  
+            // Update the content with the fetched quote
+            quoteContent.textContent = randomQuote.text;
+            quoteAuthor.textContent = randomQuote.author;
+  
+            // Show the quote section
+            document.getElementById('quote-figure').style.display = 'block';
+          })
+          .catch(error => console.log(error));
+      </script>
+  
+  {% endblock content %}

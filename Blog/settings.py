@@ -27,7 +27,7 @@ DEBUG = True
 
 #ALLOWED_HOSTS = []
 
-ALLOWED_HOSTS = ['personalweblog.up.railway.app']
+ALLOWED_HOSTS = ['personalweblog.up.railway.app', '127.0.0.1']
 
 
 # Application definition

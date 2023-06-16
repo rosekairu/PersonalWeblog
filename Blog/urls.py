@@ -24,7 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     path('blog/', blog, name='post-list'),
-    path('post/<id>/', post, name='post-detail'),
+    path('post/<int:id>/', post, name='post-detail'),
     path('tinymce/', include('tinymce.urls')),
 ]
 

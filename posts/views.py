@@ -90,31 +90,3 @@ def get_category_count():
         .values('categories__title') \
         .annotate(Count('categories__title'))
     return queryset
-
-
-def post_create(request):
-    title = 'Create'
-    form = PostForm(request.POST or None, request.FILES or None)
-    if request.method == "POST":
-        print('POST request received')
-        print('Form data:', request.POST)
-        if form.is_valid():
-            print(form.errors)
-            form.save()
-            return redirect(reverse("post", kwargs={'id': form.instance.id}))
-        
-    context = {
-        'title': title,
-        'form': form
-    }
-    return render(request, "post_create.html", context)
-
-
-def post_update(request, id):
-    pass
-
-
-def post_delete(request, id):
-    post = get_object_or_404(Post, id=id)
-    post.delete()
-    return redirect(reverse("post-list"))

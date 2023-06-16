@@ -8,9 +8,9 @@ from .forms import CommentForm, PostForm
 
 
 def get_author(user):
-    qs = Author.objects.filter(user=user)
-    if qs.exists():
-        return qs[0]
+    if user.is_authenticated:
+        author, created = Author.objects.get_or_create(user=user)
+        return author
     return None
 
 def home(request):

@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,16 +129,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dmmebaanc',
-    'API_KEY': '574514783354568',
-    'API_SECRET': '7aLtX_SU3-Dh-qzdtXjgKirolPI',
-}
+# Load variables from .env file
+load_dotenv()
 
-
-CLOUDINARY_URL = 'cloudinary://574514783354568:7aLtX_SU3-Dh-qzdtXjgKirolPI@dmmebaanc'
-
-STATIC_URL = 'https://res.cloudinary.com/dmmebaanc/static/'
+# Access the variables
+CLOUD_NAME = os.getenv('CLOUD_NAME')
+API_KEY = os.getenv('API_KEY')
+API_SECRET = os.getenv('API_SECRET')
+CLOUDINARY_URL = os.getenv('CLOUDINARY_URL')
+STATIC_URL = os.getenv('STATIC_URL')
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'

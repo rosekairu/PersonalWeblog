@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
     'marketing',
     'posts',
+
+    'cloudinary_storage',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -125,9 +127,27 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dmmebaanc',
+    'API_KEY': '574514783354568',
+    'API_SECRET': '7aLtX_SU3-Dh-qzdtXjgKirolPI',
+}
+
+
+CLOUDINARY_URL = 'cloudinary://574514783354568:7aLtX_SU3-Dh-qzdtXjgKirolPI@dmmebaanc'
+
+STATIC_URL = 'https://res.cloudinary.com/dmmebaanc/static/'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+
+
 
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'

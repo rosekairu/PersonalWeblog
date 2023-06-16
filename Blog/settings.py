@@ -136,14 +136,15 @@ USE_TZ = True
 load_dotenv()
 
 # Cloudinary Storage Access to the variables
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUD_NAME'),
-    'API_KEY': config('API_KEY'),
-    'API_SECRET': config('API_SECRET'),
-}
 
-CLOUDINARY_URL = config('CLOUDINARY_URL')
-STATIC_URL = config('STATIC_URL')
+
+CLOUD_NAME = str(os.getenv('CLOUD_NAME'))
+API_KEY = str(os.getenv('API_KEY'))
+API_SECRET = str(os.getenv('API_SECRET'))
+
+
+CLOUDINARY_URL = str(os.getenv('CLOUDINARY_URL'))
+STATIC_URL = str(os.getenv('STATIC_URL'))
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'

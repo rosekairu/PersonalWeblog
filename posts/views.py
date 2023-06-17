@@ -7,11 +7,9 @@ from marketing.models import Signup
 from .forms import CommentForm, PostForm
 
 
-def get_author(user):
-    if user.is_authenticated:
-        author, created = Author.objects.get_or_create(user=user)
-        return author
-    return None
+def get_author():
+    author = Author.objects.first()  # Retrieve the first author object from the database
+    return author
 
 def home(request):
     recent = Post.objects.latest('date')
@@ -25,7 +23,7 @@ def post(request, id):
     category_count = get_category_count()
     featured = Post.objects.filter(featured=True)
     recent = Post.objects.order_by('-date')[0:3]
-    author = get_author(request.user)
+    author = get_author()
 
     form = CommentForm(request.POST or None)
     if request.method == 'POST':
@@ -58,7 +56,7 @@ def blog(request):
     category_count = get_category_count()
     post_list= Post.objects.all()
     recent = Post.objects.order_by('-date')[0:3]
-    author = get_author(request.user)
+    author = get_author()
     paginator = Paginator(post_list, 3)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)

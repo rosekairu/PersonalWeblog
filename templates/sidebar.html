@@ -12,7 +12,11 @@
           width="100">
         {% endif %}
         {% if description %}
-        <p class="text-sm text-muted">{{ description }}</p>
+        <p class="text-sm text-muted">{{ description }}</p> # Thank you for visiting my blog.
+
+        Here, I share my thoughts, experiences, and insights on various topics. Feel free to explore and engage with the content. If you have any questions or suggestions, don't hesitate to reach out. 
+        
+        Enjoy reading!
         {% else %}
         <p class="text-sm text-muted">No description available.</p>
         {% endif %}
@@ -34,7 +38,7 @@
           <div class="d-flex mb-3"><a class="flex-shrink-0" href="{{ post.get_absolute_url }}"><img class="img-fluid" src="{{ post.thumbnail.url }}" alt="" width="70"></a>
             <div class="ms-3">
               <h6> <a class="reset-anchor" href="{{ post.get_absolute_url }}" >{{ post.title }}</a></h6>
-              <p class="text-sm text-muted lh-sm mb-0">{{ post.overview | safe }}</p>
+             <!-- <p class="text-sm text-muted lh-sm mb-0">{{ post.overview | safe }}</p> -->
             </div>
           </div>
         {% endfor %}

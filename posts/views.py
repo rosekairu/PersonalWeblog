@@ -8,7 +8,7 @@ from .forms import CommentForm, PostForm
 
 
 def get_author():
-    author = Author.objects.first()  # Retrieve the first author object from the database
+    author = Author.objects.first()  
     return author
 
 def home(request):

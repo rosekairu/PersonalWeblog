@@ -31,9 +31,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = []
-
-ALLOWED_HOSTS = ['personalweblog.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -54,6 +52,8 @@ INSTALLED_APPS = [
 
     'cloudinary',
     'cloudinary_storage',
+
+    'posts.templatetags.custom_filters',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

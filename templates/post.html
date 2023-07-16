@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
+
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
+
+<style>
+  .lower-font {
+    font-size: 20px;
+    /* Adjust the font size as needed */
+  }
+</style>
 
 <section class="py-5">
   <div class="container pb-4">
     <div class="row text-center">
       <div class="col-lg-8 mx-auto">{% for category in post.categories.all %}<a
           class="category-link mb-3 d-inline-block" href="#!">{{category}}</a> {% endfor%}
-        <h1>{{post.title}}</h1>
-        <p>{{post.overview | safe }}</p>
+
+        <h3>{{ post.title|split:":"|first }}: <br>
+          <span class="lower-font">{{ post.title|split:":"|last }}</span>
+        </h3>
+        <!--  <p>{{post.overview | safe }}</p> -->
         <ul class="list-inline mb-5">
           <li class="list-inline-item mx-2"><a class="text-uppercase text-muted reset-anchor"
               href="#!">{{post.author}}</a></li>
@@ -80,12 +92,14 @@
             <div class="user d-flex align-items-center">
               <div class="image">
                 {% if comment.user.author %}
-                <img src="{{ comment.user.author.profile_picture.url }}" alt="..." class="img-fluid rounded-circle" width="50">
+                <img src="{{ comment.user.author.profile_picture.url }}" alt="..." class="img-fluid rounded-circle"
+                  width="50">
                 {% else %}
                 <i class="far fa-comment fa-2x fa-rotate-270" alt="..." class="img-fluid rounded-circle"> </i>
                 {% endif %}
               </div> &nbsp;
-              <div class="title"><strong>{{ comment.user.username }}</strong> <br> <span class="date">{{ comment.timestamp|timesince }} ago</span></div>
+              <div class="title"><strong>{{ comment.user.username }}</strong> <br> <span class="date">
+                {{ comment.timestamp|timesince }} ago</span></div>
             </div>
           </div>
           <div class="comment-body">

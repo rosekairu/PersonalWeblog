@@ -86,8 +86,18 @@
             <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}"
                 class="page-link"> <i class="fa fa-angle-left"></i></a></li>
             {% endif %}
+<<<<<<< HEAD
             <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.number }}" class="page-link active">{{
                 queryset.number }}</a></li>
+=======
+<<<<<<< HEAD
+            <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.number }}" class="page-link active">
+              {{queryset.number }}</a></li>
+=======
+            <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.number }}" class="page-link active">{{
+                queryset.number }}</a></li>
+>>>>>>> 8fccb6b (modified the whole project)
+>>>>>>> 2da8a9a (modified the project)
             {% if queryset.has_next %}
             <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.next_page_number }}" class="page-link">
                 <i class="fa fa-angle-right"></i></a></li>
